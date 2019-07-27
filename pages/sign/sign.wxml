@@ -1,0 +1,57 @@
+<view class="container">
+    <form bindsubmit="sendMessage">
+        <view class="data">
+            <view class="data_block">
+                <view class="left">
+                    <image class="img" src="../../imgs/name.png" />
+                    <p>姓名*</p>
+                </view>
+                <view class="right">
+                    <input placeholder-class="input-placeholder" class="input" name="truename" placeholder="填写姓名" value="{{index}}" />
+                </view>
+            </view>
+            <view class="data_block">
+                <view class="left">
+                    <image class="img" src="../../imgs/phone.png" />
+                    <p>联系方式*</p>
+                </view>
+                <view class="right">
+                    <input placeholder-class="input-placeholder" type="number" class="input" name="number" placeholder="填写联系方式" value="{{index}}" />
+                </view>
+            </view>
+            <view class="data_block">
+                <view class="left">
+                    <image class="img" src="../../imgs/address.png" />
+                    <p>地址*</p>
+                </view>
+                <view class="right">
+                    <input placeholder-class="input-placeholder" class="input" name="address" placeholder="填写地址" value="{{index}}" />
+                </view>
+            </view>
+            <view class="data_block">
+                <view class="left">
+                    <image class="img" src="../../imgs/school.png" />
+                    <p>所选教练</p>
+                </view>
+                <view class="right">
+                    <picker class="input" bindchange="bindDriverChange" value="{{index}}" range="{{drivers}}">
+                        <input placeholder-class="input-placeholder" name="drivers" placeholder="选择教练" value="{{drValue}}" disabled="{{true}}" />
+                    </picker>
+                </view>
+            </view>
+            <view class="data_block last">
+                <view class="left">
+                    <image class="img" src="../../imgs/package.png" />
+                    <p>所选套餐</p>
+                </view>
+                <view class="right">
+                    <picker class="input" bindchange="bindDisChange" value="{{index}}" range="{{discounts}}">
+                        <input placeholder-class="input-placeholder" name="discounts" placeholder="选择套餐" value="{{disValue}}" disabled="{{true}}" />
+                    </picker>
+                </view>
+            </view>
+            <!-- 提交按钮 -->
+            <button form-type="submit">提交</button>
+        </view>
+    </form>
+</view>

@@ -1,0 +1,16 @@
+<view class="chooseTime">请选择合适的时间</view>
+<view class="container">
+    <form bindsubmit="sendDate">
+        <!-- 预约七天之内 -->
+        <picker mode="date" value="{{check}}" start="{{today}}" end="{{endDay}}" fields='day' bindchange="bindDateChange">
+            <text class="date_title">日期</text>
+            <input disabled="{{true}}" class="set_date" name="future_date" value="{{check}}" />
+        </picker>
+        <picker mode="selector" value="{{index}}" range="{{time}}" bindchange="timeChange">
+            <text>时间段</text>
+            <input disabled="{{true}}" value="{{time[picked]}}" name="picked" />
+        </picker>
+        <!-- 提交 -->
+        <button form-type="submit" hover-class="none">提交</button>
+    </form>
+</view>

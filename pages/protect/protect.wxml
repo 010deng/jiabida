@@ -1,0 +1,9 @@
+<view class="container">
+    <swiper indicator-dots="{{false}}" vertical>
+        <block wx:for="{{adv}}">
+            <swiper-item class="item"> 
+                <image lazy-load="{{true}}" class="swiper-image" src="{{item.img_url}}" />
+            </swiper-item>
+        </block>
+    </swiper>
+</view>

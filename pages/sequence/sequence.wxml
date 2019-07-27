@@ -1,0 +1,465 @@
+<swiper indicator-dots="{{false}}" autoplay="{{false}}" duration="{{500}}" skip-hidden-item-layout="{{true}}" bindchange="swiperChange" current="{{swiperIndex}}" circular="{{true}}">
+    <swiper-item>
+        <scroll-view class="scro" scroll-y="{{true}}" bindscrolltoupper="topper" style="height:{{scroll_height}}rpx">
+            <view class="top">
+                <view class="block">
+                    <view class="question">
+                        <p>
+                            <text class="tag">{{topic_status==2?"多选":topic_types}}</text>
+                            {{question}}
+                        </p>
+                        <image class="questionImg" wx:if="{{pic !== false}}" src="{{pic}}" />
+                    </view>
+                    <!-- 判断 -->
+                    <radio-group wx:if="{{topic_status == 0}}" class="radio-group" bindchange="radioChange" data-answer="{{answer}}" data-id="{{id}}">
+                        <label class="radio">
+                            <view hover-class="radio_hover" hover-stay-time="100" bind:tap="block_r">
+                                <radio value="对" disabled="{{disabled}}" checked="{{checked}}" />
+                                <image class="ifRight {{hidden_r}}" src="{{answer == result?right:wrong}}" />
+                                正确
+                            </view>
+                        </label>
+                        <label class="radio">
+                            <view hover-class="radio_hover" hover-stay-time="100" bind:tap="block_w">
+                                <radio value="错" disabled="{{disabled}}" checked="{{checked}}" />
+                                <image class="ifRight {{hidden_w}}" src="{{item.answer == result?right:wrong}}" />
+                                错误
+                            </view>
+                        </label>
+                    </radio-group>
+                    <!-- 选择题 -->
+                    <radio-group wx:if="{{topic_status == 1}}" class="radio-group" bindchange="radioChange" data-answer="{{answer}}" data-id="{{id}}">
+                        <label class="radio">
+                            <view hover-class="radio_hover" hover-stay-time="100" bind:tap="block_a">
+                                <radio value="A" disabled="{{disabled}}" checked="{{checked}}" />
+                                <image class="ifRight {{hidden_a}}" src="{{answer == result?right:wrong}}" />
+                                {{option1}}
+                            </view>
+                        </label>
+                        <label class="radio">
+                            <view hover-class="radio_hover" hover-stay-time="100" bind:tap="block_b">
+                                <radio value="B" disabled="{{disabled}}" checked="{{checked}}" />
+                                <image class="ifRight {{hidden_b}}" src="{{answer == result?right:wrong}}" />
+                                {{option2}}
+                            </view>
+                        </label>
+                        <label class="radio">
+                            <view hover-class="radio_hover" hover-stay-time="100" bind:tap="block_c">
+                                <radio value="C" disabled="{{disabled}}" checked="{{checked}}" />
+                                <image class="ifRight {{hidden_c}}" src="{{answer == result?right:wrong}}" />
+                                {{option3}}
+                            </view>
+                        </label>
+                        <label class="radio">
+                            <view hover-class="radio_hover" hover-stay-time="100" bind:tap="block_d">
+                                <radio value="D" disabled="{{disabled}}" checked="{{checked}}" />
+                                <image class="ifRight {{hidden_d}}" src="{{answer == result?right:wrong}}" />
+                                {{option4}}
+                            </view>
+                        </label>
+                    </radio-group>
+                    <!-- 多选题 -->
+                    <checkbox-group wx:if="{{topic_status == 2}}" class="radio-group" bindchange="CheckBoxChange" data-answer="{{answer}}" data-id="{{id}}">
+                        <label class="radio">
+                            <view hover-class="radio_hover" hover-stay-time="100" data-index="1" bind:tap="sureSelect">
+                                <checkbox value="A" disabled="{{disabled}}" checked="{{checked}}" />
+                                <image class="ifRight {{hidden_a}}" src="{{checkA == -1?wrong:right}}" />
+                                {{option1}}
+                            </view>
+                        </label>
+                        <label class="radio">
+                            <view hover-class="radio_hover" hover-stay-time="100" data-index="2" bind:tap="sureSelect">
+                                <checkbox value="B" disabled="{{disabled}}" checked="{{checked}}" />
+                                <image class="ifRight {{hidden_b}}" src="{{checkB == -1?wrong:right}}" />
+                                {{option2}}
+                            </view>
+                        </label>
+                        <label class="radio">
+                            <view hover-class="radio_hover" hover-stay-time="100" data-index="3" bind:tap="sureSelect">
+                                <checkbox value="C" disabled="{{disabled}}" checked="{{checked}}" />
+                                <image class="ifRight {{hidden_c}}" src="{{checkC == -1?wrong:right}}" />
+                                {{option3}}
+                            </view>
+                        </label>
+                        <label class="radio">
+                            <view hover-class="radio_hover" hover-stay-time="100" data-index="4" bind:tap="sureSelect">
+                                <checkbox value="D" disabled="{{disabled}}" checked="{{checked}}" />
+                                <image class="ifRight {{hidden_d}}" src="{{checkD == -1?wrong:right}}" />
+                                {{option4}}
+                            </view>
+                        </label>
+                    </checkbox-group>
+                    <view class="blockSend">
+                        <button class="sendAnswer" wx:if="{{topic_status == 2}}" hover-class="none" catch:tap="sendAnswer">
+                            提交答案
+                        </button>
+                    </view>
+                </view>
+                <!-- 遮罩层 -->
+                <view class=" answerFix {{blockContain}}"></view>
+            </view>
+            <view class="{{bottom}}">
+                <view class="block">
+                    <view class="answer">
+                        <text class="sx">|</text>
+                        <text class="title">答案：{{answer}}</text>
+                    </view>
+                    <view class="content">{{explain}}</view>
+                </view>
+            </view>
+        </scroll-view>
+    </swiper-item>
+    <swiper-item>
+        <scroll-view class="scro" scroll-y="{{true}}" bindscrolltoupper="topper" style="height:{{scroll_height}}rpx">
+            <view class="top">
+                <view class="block">
+                    <view class="question">
+                        <p>
+                            <text class="tag">{{topic_status==2?"多选":topic_types}}</text>
+                            {{question}}
+                        </p>
+                        <image class="questionImg" wx:if="{{pic !== false}}" src="{{pic}}" />
+                    </view>
+                    <!-- 判断 -->
+                    <radio-group wx:if="{{topic_status == 0}}" class="radio-group" bindchange="radioChange" data-answer="{{answer}}" data-id="{{id}}">
+                        <label class="radio">
+                            <view hover-class="radio_hover" hover-stay-time="100" bind:tap="block_r">
+                                <radio value="对" disabled="{{disabled}}" checked="{{checked}}" />
+                                <image class="ifRight {{hidden_r}}" src="{{answer == result?right:wrong}}" />
+                                正确
+                            </view>
+                        </label>
+                        <label class="radio">
+                            <view hover-class="radio_hover" hover-stay-time="100" bind:tap="block_w">
+                                <radio value="错" disabled="{{disabled}}" checked="{{checked}}" />
+                                <image class="ifRight {{hidden_w}}" src="{{item.answer == result?right:wrong}}" />
+                                错误
+                            </view>
+                        </label>
+                    </radio-group>
+                    <!-- 选择题 -->
+                    <radio-group wx:if="{{topic_status == 1}}" class="radio-group" bindchange="radioChange" data-answer="{{answer}}" data-id="{{id}}">
+                        <label class="radio">
+                            <view hover-class="radio_hover" hover-stay-time="100" bind:tap="block_a">
+                                <radio value="A" disabled="{{disabled}}" checked="{{checked}}" />
+                                <image class="ifRight {{hidden_a}}" src="{{answer == result?right:wrong}}" />
+                                {{option1}}
+                            </view>
+                        </label>
+                        <label class="radio">
+                            <view hover-class="radio_hover" hover-stay-time="100" bind:tap="block_b">
+                                <radio value="B" disabled="{{disabled}}" checked="{{checked}}" />
+                                <image class="ifRight {{hidden_b}}" src="{{answer == result?right:wrong}}" />
+                                {{option2}}
+                            </view>
+                        </label>
+                        <label class="radio">
+                            <view hover-class="radio_hover" hover-stay-time="100" bind:tap="block_c">
+                                <radio value="C" disabled="{{disabled}}" checked="{{checked}}" />
+                                <image class="ifRight {{hidden_c}}" src="{{answer == result?right:wrong}}" />
+                                {{option3}}
+                            </view>
+                        </label>
+                        <label class="radio">
+                            <view hover-class="radio_hover" hover-stay-time="100" bind:tap="block_d">
+                                <radio value="D" disabled="{{disabled}}" checked="{{checked}}" />
+                                <image class="ifRight {{hidden_d}}" src="{{answer == result?right:wrong}}" />
+                                {{option4}}
+                            </view>
+                        </label>
+                    </radio-group>
+                    <!-- 多选题 -->
+                    <checkbox-group wx:if="{{topic_status == 2}}" class="radio-group" bindchange="CheckBoxChange" data-answer="{{answer}}" data-id="{{id}}">
+                        <label class="radio">
+                            <view hover-class="radio_hover" hover-stay-time="100" data-index="1" bind:tap="sureSelect">
+                                <checkbox value="A" disabled="{{disabled}}" checked="{{checked}}" />
+                                <image class="ifRight {{hidden_a}}" src="{{checkA == -1?wrong:right}}" />
+                                {{option1}}
+                            </view>
+                        </label>
+                        <label class="radio">
+                            <view hover-class="radio_hover" hover-stay-time="100" data-index="2" bind:tap="sureSelect">
+                                <checkbox value="B" disabled="{{disabled}}" checked="{{checked}}" />
+                                <image class="ifRight {{hidden_b}}" src="{{checkB == -1?wrong:right}}" />
+                                {{option2}}
+                            </view>
+                        </label>
+                        <label class="radio">
+                            <view hover-class="radio_hover" hover-stay-time="100" data-index="3" bind:tap="sureSelect">
+                                <checkbox value="C" disabled="{{disabled}}" checked="{{checked}}" />
+                                <image class="ifRight {{hidden_c}}" src="{{checkC == -1?wrong:right}}" />
+                                {{option3}}
+                            </view>
+                        </label>
+                        <label class="radio">
+                            <view hover-class="radio_hover" hover-stay-time="100" data-index="4" bind:tap="sureSelect">
+                                <checkbox value="D" disabled="{{disabled}}" checked="{{checked}}" />
+                                <image class="ifRight {{hidden_d}}" src="{{checkD == -1?wrong:right}}" />
+                                {{option4}}
+                            </view>
+                        </label>
+                    </checkbox-group>
+                    <view class="blockSend">
+                        <button class="sendAnswer" wx:if="{{topic_status == 2}}" hover-class="none" catch:tap="sendAnswer">
+                            提交答案
+                        </button>
+                    </view>
+                </view>
+                <!-- 遮罩层 -->
+                <view class=" answerFix {{blockContain}}"></view>
+            </view>
+            <view class="{{bottom}}">
+                <view class="block">
+                    <view class="answer">
+                        <text class="sx">|</text>
+                        <text class="title">答案：{{answer}}</text>
+                    </view>
+                    <view class="content">{{explain}}</view>
+                </view>
+            </view>
+        </scroll-view>
+    </swiper-item>
+    <swiper-item>
+        <scroll-view class="scro" scroll-y="{{true}}" bindscrolltoupper="topper" style="height:{{scroll_height}}rpx">
+            <view class="top">
+                <view class="block">
+                    <view class="question">
+                        <p>
+                            <text class="tag">{{topic_status==2?"多选":topic_types}}</text>
+                            {{question}}
+                        </p>
+                        <image class="questionImg" wx:if="{{pic !== false}}" src="{{pic}}" />
+                    </view>
+                    <!-- 判断 -->
+                    <radio-group wx:if="{{topic_status == 0}}" class="radio-group" bindchange="radioChange" data-answer="{{answer}}" data-id="{{id}}">
+                        <label class="radio">
+                            <view hover-class="radio_hover" hover-stay-time="100" bind:tap="block_r">
+                                <radio value="对" disabled="{{disabled}}" checked="{{checked}}" />
+                                <image class="ifRight {{hidden_r}}" src="{{answer == result?right:wrong}}" />
+                                正确
+                            </view>
+                        </label>
+                        <label class="radio">
+                            <view hover-class="radio_hover" hover-stay-time="100" bind:tap="block_w">
+                                <radio value="错" disabled="{{disabled}}" checked="{{checked}}" />
+                                <image class="ifRight {{hidden_w}}" src="{{item.answer == result?right:wrong}}" />
+                                错误
+                            </view>
+                        </label>
+                    </radio-group>
+                    <!-- 选择题 -->
+                    <radio-group wx:if="{{topic_status == 1}}" class="radio-group" bindchange="radioChange" data-answer="{{answer}}" data-id="{{id}}">
+                        <label class="radio">
+                            <view hover-class="radio_hover" hover-stay-time="100" bind:tap="block_a">
+                                <radio value="A" disabled="{{disabled}}" checked="{{checked}}" />
+                                <image class="ifRight {{hidden_a}}" src="{{answer == result?right:wrong}}" />
+                                {{option1}}
+                            </view>
+                        </label>
+                        <label class="radio">
+                            <view hover-class="radio_hover" hover-stay-time="100" bind:tap="block_b">
+                                <radio value="B" disabled="{{disabled}}" checked="{{checked}}" />
+                                <image class="ifRight {{hidden_b}}" src="{{answer == result?right:wrong}}" />
+                                {{option2}}
+                            </view>
+                        </label>
+                        <label class="radio">
+                            <view hover-class="radio_hover" hover-stay-time="100" bind:tap="block_c">
+                                <radio value="C" disabled="{{disabled}}" checked="{{checked}}" />
+                                <image class="ifRight {{hidden_c}}" src="{{answer == result?right:wrong}}" />
+                                {{option3}}
+                            </view>
+                        </label>
+                        <label class="radio">
+                            <view hover-class="radio_hover" hover-stay-time="100" bind:tap="block_d">
+                                <radio value="D" disabled="{{disabled}}" checked="{{checked}}" />
+                                <image class="ifRight {{hidden_d}}" src="{{answer == result?right:wrong}}" />
+                                {{option4}}
+                            </view>
+                        </label>
+                    </radio-group>
+                    <!-- 多选题 -->
+                    <checkbox-group wx:if="{{topic_status == 2}}" class="radio-group" bindchange="CheckBoxChange" data-answer="{{answer}}" data-id="{{id}}">
+                        <label class="radio">
+                            <view hover-class="radio_hover" hover-stay-time="100" data-index="1" bind:tap="sureSelect">
+                                <checkbox value="A" disabled="{{disabled}}" checked="{{checked}}" />
+                                <image class="ifRight {{hidden_a}}" src="{{checkA == -1?wrong:right}}" />
+                                {{option1}}
+                            </view>
+                        </label>
+                        <label class="radio">
+                            <view hover-class="radio_hover" hover-stay-time="100" data-index="2" bind:tap="sureSelect">
+                                <checkbox value="B" disabled="{{disabled}}" checked="{{checked}}" />
+                                <image class="ifRight {{hidden_b}}" src="{{checkB == -1?wrong:right}}" />
+                                {{option2}}
+                            </view>
+                        </label>
+                        <label class="radio">
+                            <view hover-class="radio_hover" hover-stay-time="100" data-index="3" bind:tap="sureSelect">
+                                <checkbox value="C" disabled="{{disabled}}" checked="{{checked}}" />
+                                <image class="ifRight {{hidden_c}}" src="{{checkC == -1?wrong:right}}" />
+                                {{option3}}
+                            </view>
+                        </label>
+                        <label class="radio">
+                            <view hover-class="radio_hover" hover-stay-time="100" data-index="4" bind:tap="sureSelect">
+                                <checkbox value="D" disabled="{{disabled}}" checked="{{checked}}" />
+                                <image class="ifRight {{hidden_d}}" src="{{checkD == -1?wrong:right}}" />
+                                {{option4}}
+                            </view>
+                        </label>
+                    </checkbox-group>
+                    <view class="blockSend">
+                        <button class="sendAnswer" wx:if="{{topic_status == 2}}" hover-class="none" catch:tap="sendAnswer">
+                            提交答案
+                        </button>
+                    </view>
+                </view>
+                <!-- 遮罩层 -->
+                <view class=" answerFix {{blockContain}}"></view>
+            </view>
+            <view class="{{bottom}}">
+                <view class="block">
+                    <view class="answer">
+                        <text class="sx">|</text>
+                        <text class="title">答案：{{answer}}</text>
+                    </view>
+                    <view class="content">{{explain}}</view>
+                </view>
+            </view>
+        </scroll-view>
+    </swiper-item>
+    <swiper-item>
+        <scroll-view class="scro" scroll-y="{{true}}" bindscrolltoupper="topper" style="height:{{scroll_height}}rpx">
+            <view class="top">
+                <view class="block">
+                    <view class="question">
+                        <p>
+                            <text class="tag">{{topic_status==2?"多选":topic_types}}</text>
+                            {{question}}
+                        </p>
+                        <image class="questionImg" wx:if="{{pic !== false}}" src="{{pic}}" />
+                    </view>
+                    <!-- 判断 -->
+                    <radio-group wx:if="{{topic_status == 0}}" class="radio-group" bindchange="radioChange" data-answer="{{answer}}" data-id="{{id}}">
+                        <label class="radio">
+                            <view hover-class="radio_hover" hover-stay-time="100" bind:tap="block_r">
+                                <radio value="对" disabled="{{disabled}}" checked="{{checked}}" />
+                                <image class="ifRight {{hidden_r}}" src="{{answer == result?right:wrong}}" />
+                                正确
+                            </view>
+                        </label>
+                        <label class="radio">
+                            <view hover-class="radio_hover" hover-stay-time="100" bind:tap="block_w">
+                                <radio value="错" disabled="{{disabled}}" checked="{{checked}}" />
+                                <image class="ifRight {{hidden_w}}" src="{{item.answer == result?right:wrong}}" />
+                                错误
+                            </view>
+                        </label>
+                    </radio-group>
+                    <!-- 选择题 -->
+                    <radio-group wx:if="{{topic_status == 1}}" class="radio-group" bindchange="radioChange" data-answer="{{answer}}" data-id="{{id}}">
+                        <label class="radio">
+                            <view hover-class="radio_hover" hover-stay-time="100" bind:tap="block_a">
+                                <radio value="A" disabled="{{disabled}}" checked="{{checked}}" />
+                                <image class="ifRight {{hidden_a}}" src="{{answer == result?right:wrong}}" />
+                                {{option1}}
+                            </view>
+                        </label>
+                        <label class="radio">
+                            <view hover-class="radio_hover" hover-stay-time="100" bind:tap="block_b">
+                                <radio value="B" disabled="{{disabled}}" checked="{{checked}}" />
+                                <image class="ifRight {{hidden_b}}" src="{{answer == result?right:wrong}}" />
+                                {{option2}}
+                            </view>
+                        </label>
+                        <label class="radio">
+                            <view hover-class="radio_hover" hover-stay-time="100" bind:tap="block_c">
+                                <radio value="C" disabled="{{disabled}}" checked="{{checked}}" />
+                                <image class="ifRight {{hidden_c}}" src="{{answer == result?right:wrong}}" />
+                                {{option3}}
+                            </view>
+                        </label>
+                        <label class="radio">
+                            <view hover-class="radio_hover" hover-stay-time="100" bind:tap="block_d">
+                                <radio value="D" disabled="{{disabled}}" checked="{{checked}}" />
+                                <image class="ifRight {{hidden_d}}" src="{{answer == result?right:wrong}}" />
+                                {{option4}}
+                            </view>
+                        </label>
+                    </radio-group>
+                    <!-- 多选题 -->
+                    <checkbox-group wx:if="{{topic_status == 2}}" class="radio-group" bindchange="CheckBoxChange" data-answer="{{answer}}" data-id="{{id}}">
+                        <label class="radio">
+                            <view hover-class="radio_hover" hover-stay-time="100" data-index="1" bind:tap="sureSelect">
+                                <checkbox value="A" disabled="{{disabled}}" checked="{{checked}}" />
+                                <image class="ifRight {{hidden_a}}" src="{{checkA == -1?wrong:right}}" />
+                                {{option1}}
+                            </view>
+                        </label>
+                        <label class="radio">
+                            <view hover-class="radio_hover" hover-stay-time="100" data-index="2" bind:tap="sureSelect">
+                                <checkbox value="B" disabled="{{disabled}}" checked="{{checked}}" />
+                                <image class="ifRight {{hidden_b}}" src="{{checkB == -1?wrong:right}}" />
+                                {{option2}}
+                            </view>
+                        </label>
+                        <label class="radio">
+                            <view hover-class="radio_hover" hover-stay-time="100" data-index="3" bind:tap="sureSelect">
+                                <checkbox value="C" disabled="{{disabled}}" checked="{{checked}}" />
+                                <image class="ifRight {{hidden_c}}" src="{{checkC == -1?wrong:right}}" />
+                                {{option3}}
+                            </view>
+                        </label>
+                        <label class="radio">
+                            <view hover-class="radio_hover" hover-stay-time="100" data-index="4" bind:tap="sureSelect">
+                                <checkbox value="D" disabled="{{disabled}}" checked="{{checked}}" />
+                                <image class="ifRight {{hidden_d}}" src="{{checkD == -1?wrong:right}}" />
+                                {{option4}}
+                            </view>
+                        </label>
+                    </checkbox-group>
+                    <view class="blockSend">
+                        <button class="sendAnswer" wx:if="{{topic_status == 2}}" hover-class="none" catch:tap="sendAnswer">
+                            提交答案
+                        </button>
+                    </view>
+                </view>
+                <!-- 遮罩层 -->
+                <view class=" answerFix {{blockContain}}"></view>
+            </view>
+            <view class="{{bottom}}">
+                <view class="block">
+                    <view class="answer">
+                        <text class="sx">|</text>
+                        <text class="title">答案：{{answer}}</text>
+                    </view>
+                    <view class="content">{{explain}}</view>
+                </view>
+            </view>
+        </scroll-view>
+    </swiper-item>
+</swiper>
+<!-- 底部固定栏 -->
+<view class="fixedBottom">
+    <view class="right">
+        <image src="../../imgs/right.png" />
+        <text>{{r_number}}</text>
+    </view>
+    <view class="wrong">
+        <image src="../../imgs/wrong.png" />
+        <text>{{w_number}}</text>
+    </view>
+    <view class="position">
+        <image src="../../imgs/position.png" />
+        <text>{{swiperIndex_bottom}}/{{allNum}}</text>
+    </view>
+    <view class="collection" catch:tap="changeC">
+        <image src="{{s_now}}" />
+        <text>收藏</text>
+    </view>
+    <view class="analysis" catch:tap="changeA">
+        <image src="{{a_now}}" />
+        <text>背题模式</text>
+    </view>
+</view>

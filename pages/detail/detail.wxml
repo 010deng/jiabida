@@ -1,0 +1,22 @@
+<view class="container">
+    <view class="topImg" bind:tap="toImgList">
+        <image src="{{imgList[0].img_url}}" />
+    </view>
+    <view class="card">
+        <view class="name">{{name}}</view>
+        <view class="position">
+            <text>学员：{{number}}人</text>
+            <text>教龄：{{teachage}}年</text>
+        </view>
+        <view class="abstract">
+            <text>通过率：{{passing}}%</text>
+        </view>
+    </view>
+    <view class="introduction">
+        <view class="title">简介</view>
+        <text>{{introduction}}</text>
+    </view>
+    <view class="fixBottom">
+        <button open-type="contact">免费咨询</button>
+    </view>
+</view>

@@ -1,0 +1,9 @@
+<view class="container">
+    <view class="flex">
+        <block wx:for="{{list}}">
+            <view class="imgs">
+                <image src="{{item.img_url}}" data-src="{{item.img_url}}" bind:tap="preview" />
+            </view>
+        </block>
+    </view>
+</view>

@@ -1,0 +1,160 @@
+page {
+    background-color: #eeeeee;
+}
+
+.top {
+    width: 100%;
+    height: 880rpx;
+    background-color: #fff;
+}
+
+.top_block {
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.topFixed {
+    width: 90%;
+    height: 180rpx;
+    position: absolute;
+    top: 40%;
+    transform: translateY(-50%);
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+}
+
+.topFixed .left {
+    display: flex;
+    align-items: center;
+}
+
+.nickName {
+    max-width: 200rpx;
+    overflow:hidden;
+    text-overflow: ellipsis;
+}
+
+.topFixed .bindSchool {
+    width: 150rpx;
+    height: 60rpx;
+    border: 1px solid white;
+    border-radius: 20px;
+    text-align: center;
+    line-height: 60rpx;
+    margin-right: 50rpx;
+}
+
+.topFixed .head {
+    width: 120rpx;
+    height: 120rpx;
+    border-radius: 50%;
+    border: 4px solid rgba(255, 255,255, .4);
+    margin: 0 60rpx 0 20rpx;
+}
+
+.head image {
+    width: 100%;
+    height: 100%;
+}
+
+.bgc {
+    width: 100%;
+    height: 360rpx;
+}
+
+.navList {
+    width: 100%;
+    height: 500rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.navList .schedule {
+    width: 90%;
+    height: 150rpx;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.schedule view {
+    width: 15%;
+    height: 100rpx;
+    background-color: #eee;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 100rpx;
+}
+
+.block {
+    width: 90%;
+    height: 166rpx;
+    font-size: 24rpx;
+    color: black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    border-bottom: 1px solid #aaaaaa;
+}
+
+.block_l {
+    width: 250rpx;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.leftImg {
+    width: 100rpx;
+    height: 100rpx;
+}
+
+.rightImg {
+    width: 100rpx;
+    height: 100rpx;
+}
+
+.last {
+    border: none;
+    /* margin-bottom: 40rpx; */
+}
+
+.bottom {
+    width: 100%;
+    height: 150rpx;
+    margin-top: 40rpx;
+    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.bottom button {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    font-size: 24rpx;
+    background-color: #fff;
+}
+
+.right .img {
+    width: 85rpx;
+    height: 85rpx;
+}
+
+.bottom image {
+    margin: 0 20rpx;
+}
+
+.selected {
+    color: #fff;
+    background-color: #edad49!important;
+}

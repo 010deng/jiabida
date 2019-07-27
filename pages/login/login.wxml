@@ -1,0 +1,13 @@
+<view>
+    <view wx:if="{{canIUse}}">
+        <view class='authorization_header'></view>
+        <view class='authorization_content'>
+            <view>您暂时还没有授权信息哦</view>
+            <text>点击下方按钮授权</text>
+        </view>
+        <button class='authorization_bottom' type='primary' open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="bindGetUserInfo">
+            点击授权
+        </button>
+    </view>
+    <view wx:else>请升级微信版本</view>
+</view>

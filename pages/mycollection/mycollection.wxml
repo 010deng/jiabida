@@ -1,0 +1,101 @@
+<swiper indicator-dots="{{false}}" autoplay="{{false}}" duration="{{500}}" skip-hidden-item-layout="{{true}}" bindchange="swiperChange">
+    <block wx:for="{{tikuList}}">
+        <swiper-item>
+            <scroll-view class="scro" scroll-y="{{true}}" bindscrolltoupper="topper" style="height:{{scroll_height}}rpx">
+                <view class="top">
+                    <view class="block">
+                        <view class="question">
+                            <p>
+                                <text class="tag">{{item.topic_types}}</text>
+                                {{item.question}}
+                            </p>
+                            <image class="questionImg" wx:if="{{item.pic !== false}}" src="{{item.pic}}" />
+                        </view>
+                        <!-- 判断 -->
+                        <radio-group wx:if="{{item.topic_status == 0}}" class="radio-group" bindchange="radioChange" data-answer="{{item.answer}}" data-id="{{item.id}}">
+                            <label class="radio">
+                                <view hover-class="radio_hover" hover-stay-time="100" bind:tap="block_r">
+                                    <radio value="对" disabled="{{disabled}}" />
+                                    <image class="ifRight {{hidden_r}}" src="{{item.answer == result?right:wrong}}" />
+                                    正确
+                                </view>
+                            </label>
+                            <label class="radio">
+                                <view hover-class="radio_hover" hover-stay-time="100" bind:tap="block_w">
+                                    <radio value="错" disabled="{{disabled}}" />
+                                    <image class="ifRight {{hidden_w}}" src="{{item.answer == result?right:wrong}}" />
+                                    错误
+                                </view>
+                            </label>
+                        </radio-group>
+                        <!-- 选择题 -->
+                        <radio-group wx:if="{{item.topic_status == 1}}" class="radio-group" bindchange="radioChange" data-answer="{{item.answer}}" data-id="{{item.id}}">
+                            <label class="radio">
+                                <view hover-class="radio_hover" hover-stay-time="100" bind:tap="block_a">
+                                    <radio value="A" disabled="{{disabled}}" />
+                                    <image class="ifRight {{hidden_a}}" src="{{item.answer == result?right:wrong}}" />
+                                    {{item.option1}}
+                                </view>
+                            </label>
+                            <label class="radio">
+                                <view hover-class="radio_hover" hover-stay-time="100" bind:tap="block_b">
+                                    <radio value="B" disabled="{{disabled}}" />
+                                    <image class="ifRight {{hidden_b}}" src="{{item.answer == result?right:wrong}}" />
+                                    {{item.option2}}
+                                </view>
+                            </label>
+                            <label class="radio">
+                                <view hover-class="radio_hover" hover-stay-time="100" bind:tap="block_c">
+                                    <radio value="C" disabled="{{disabled}}" />
+                                    <image class="ifRight {{hidden_c}}" src="{{item.answer == result?right:wrong}}" />
+                                    {{item.option3}}
+                                </view>
+                            </label>
+                            <label class="radio">
+                                <view hover-class="radio_hover" hover-stay-time="100" bind:tap="block_d">
+                                    <radio value="D" disabled="{{disabled}}" />
+                                    <image class="ifRight {{hidden_d}}" src="{{item.answer == result?right:wrong}}" />
+                                    {{item.option4}}
+                                </view>
+                            </label>
+                        </radio-group>
+                    </view>
+                    <!-- 遮罩层 -->
+                    <view class=" answerFix {{blockContain}}"></view>
+                </view>
+                <view class="{{bottom}}">
+                    <view class="block">
+                        <view class="answer">
+                            <text class="sx">|</text>
+                            <text class="title">答案：{{item.answer}}</text>
+                        </view>
+                        <view class="content">{{item.explain}}</view>
+                    </view>
+                </view>
+            </scroll-view>
+        </swiper-item>
+    </block>
+</swiper>
+<!-- 底部固定栏 -->
+<view class="fixedBottom">
+    <view class="right">
+        <image src="../../imgs/right.png" />
+        <text>{{r_number}}</text>
+    </view>
+    <view class="wrong">
+        <image src="../../imgs/wrong.png" />
+        <text>{{w_number}}</text>
+    </view>
+    <view class="position">
+        <image src="../../imgs/position.png" />
+        <text>{{swiperIndex}}/{{allNum}}</text>
+    </view>
+    <view class="collection" catch:tap="changeC">
+        <image src="{{s_now}}" />
+        <text>收藏</text>
+    </view>
+    <view class="analysis" catch:tap="changeA">
+        <image src="{{a_now}}" />
+        <text>背题模式</text>
+    </view>
+</view>

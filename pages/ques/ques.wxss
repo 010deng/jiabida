@@ -1,0 +1,136 @@
+page {
+    background-color: #eeeeee;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.fixTop {
+    width: 100%;
+    height: 120rpx;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 28rpx;
+}
+
+.fixTop .block {
+    width: 360rpx;
+    height: 50rpx;
+    border: 1px solid #edad49;
+    display: flex;
+}
+
+.choice {
+    background: #edad49!important;
+    color: white!important;
+}
+
+.unchoice {
+    background: white!important;
+    color: #edad49!important;
+}
+
+.timeRank {
+    width: 180rpx;
+    height: 50rpx;
+    line-height: 50rpx;
+    text-align: center;
+    background: #edad49;
+    color: white;
+}
+
+.dakaRank {
+    width: 180rpx;
+    height: 50rpx;
+    line-height: 50rpx;
+    text-align: center;
+    background: white;
+    color: #edad49 ;
+}
+
+.top {
+    width: 100%;
+    height: 800rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #fff;
+    position: relative;
+}
+
+.practice {
+    width: 150rpx;
+    height: 150rpx;
+    border-radius: 50%;
+    background-color: #d27555;
+    box-shadow: 0 0 0 20rpx #e39256, 0 0 0 40rpx #ecc95f;
+    color: white;
+    font-size: 24rpx;
+    text-align: center;
+    line-height: 150rpx;
+}
+
+.test {
+    width: 150rpx;
+    height: 150rpx;
+    border-radius: 50%;
+    background-color: #589dc6;
+    box-shadow: 0 0 0 20rpx #8cc1e3, 0 0 0 40rpx #b4d7f3;
+    color: white;
+    font-size: 24rpx;
+    text-align: center;
+    line-height: 150rpx;
+}
+
+.centerImg {
+    width: 80%;
+    margin: 0 auto;
+    height: 150rpx;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 24rpx;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.centerImg image {
+    width: 100rpx;
+    height: 100rpx;
+}
+
+.centerImg view {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.centerImg p {
+    margin-top: 10rpx;
+}
+
+.bottom {
+    width: 100%;
+    height: 120rpx;
+    background-color: #fff;
+    margin-top: 40rpx;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 24rpx;
+    color: black;
+}
+
+.bottom image {
+    width: 80rpx;
+    height: 80rpx;
+    margin: 0 40rpx;
+}

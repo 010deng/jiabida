@@ -1,0 +1,287 @@
+page {
+  background-color: #eeeeee;
+}
+
+button {
+  background: linear-gradient(to right, #ed6049, #f4be92);
+  color: white;
+  width: 50%;
+  border-radius: 40rpx;
+  /* margin-top: 20rpx; */
+  box-shadow: 2px 5px 10px #ccc;
+  font-size: 24rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  margin: 0;
+  margin-right: 30rpx;
+}
+
+.sign_b {
+  margin-right: 30rpx;
+  background-color: none;
+  opacity: 1;
+  width: 50%;
+  height: 100rpx;
+}
+
+.top {
+  background-color: #fff;
+  width: 100%;
+  height: 600rpx;
+}
+
+.adv_swi {
+  width: 100%;
+  height: 260rpx;
+}
+
+.toAdv {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-image {
+  width: 100%;
+  height: 100%;
+}
+
+.sign {
+  height: 340rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sign .p_block {
+  width: 40%;
+  height: 280rpx;
+  font-size: 28rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.sign .bold {
+  font-size: 45rpx;
+  font-weight: bold;
+  color: #edad49;
+}
+
+.sign .green {
+  font-size: 28rpx;
+  color: #edad49;
+}
+
+.bu_block {
+  width: 60%;
+  height: 280rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-end;
+}
+
+/* 标题部分 */
+
+.titles {
+  width: 100%;
+  height: 100rpx;
+  background-color: #fff;
+  margin-top: 20rpx;
+  padding-bottom: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  font-size: 28rpx;
+}
+
+.titles view {
+  width: 25%;
+  height: 50%;
+  text-align: center;
+  line-height: 50rpx;
+  box-sizing: border-box;
+}
+
+.active {
+  border-bottom: 1px solid #edad49!important;
+}
+
+/* 驾校列表部分 */
+
+.school_list {
+  width: 100%;
+  height: auto;
+  padding-bottom: 20rpx;
+  background-color: #fff;
+  /* margin-top: 20rpx; */
+}
+
+.school {
+  width: 90%;
+  margin: 0 auto;
+  height: 240rpx;
+  border-bottom: 1px solid #e8e8e8;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20rpx;
+}
+
+.school .left {
+  width: 142rpx;
+  height: 200rpx;
+  background-color: #eee;
+  border-radius: 10rpx;
+  margin-left: 20rpx;
+}
+
+.left cover-image {
+  border-radius: 10rpx;
+}
+
+.school .right {
+  width: 70%;
+  height: 200rpx;
+  display: flex;
+}
+
+.right_l {
+  width: 75%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.score {
+  width: 25%;
+  height: 100%;
+  text-align: center;
+  line-height: 240rpx;
+  color: #ff7800;
+  font-size: 40rpx;
+  font-weight: 700;
+}
+
+.name {
+  font-weight: 700;
+  font-size: 32rpx;
+}
+
+.from {
+  color: #999;
+}
+
+.tags {
+  display: flex;
+}
+
+.tags view {
+  padding: 10rpx 10rpx;
+  background-color: #edad49;
+  color: white;
+  border-radius: 20rpx;
+  margin-right: 20rpx;
+}
+
+/* 套餐部分 */
+
+/* .dis_img {
+  width: 60rpx;
+  height: 60rpx;
+  margin-right: 20rpx;
+} */
+
+.tag {
+  color: #edad49!important;
+}
+
+.active_list {
+  width: 100%;
+  height: auto;
+  padding-bottom: 20rpx;
+  /* background-color: #f4f4f4; */
+  font-size: 28rpx;
+}
+
+.discounts {
+  width: 90%;
+  margin: 0 auto;
+  height: auto;
+  min-height: 100rpx;
+  /* padding-bottom: 10rpx; */
+  border-bottom: 1px solid #e8e8e8;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-top: 40rpx;
+  margin-bottom: 40rpx;
+  background-color: #fff;
+  /* padding: 0 20rpx; */
+  border-radius: 20rpx;
+  box-shadow: 0 5px 10px #eee;
+}
+
+.discounts .title {
+  display: flex;
+  align-items: center;
+}
+
+.discounts .price {
+  display: flex;
+  align-items: center;
+}
+
+.line_1 {
+  display: flex;
+  align-items: center;
+  padding: 0!important;
+  margin-top: 20rpx;
+}
+
+.discounts .content {
+  padding-top: 0;
+}
+
+.long_txt {
+  line-height: 50rpx;
+}
+
+/* 套餐*/
+
+.exam-body {
+  transition: height 0.4s;
+  height: 500rpx;
+  padding: 0 20rpx;
+  font-size: 28rpx;
+}
+
+.hidden {
+  height: 0;
+  overflow: hidden;
+}
+
+.exam-header {
+  display: flex;
+  
+}
+
+.exam-header .left {
+  width: 60%;
+  height: 100rpx;
+  background: linear-gradient(to right, #ed6049, #f4be92);
+  font-size: 28rpx;
+  color: white;
+  text-align: center;
+  line-height: 100rpx;
+  border-top-left-radius: 20rpx;
+  border-bottom-left-radius: 20rpx;
+}
+
+.exam-header .right {
+  width: 40%;
+  text-align: center;
+  height: 100rpx;
+  line-height: 100rpx;
+}

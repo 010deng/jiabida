@@ -1,0 +1,77 @@
+<view class="container">
+    <view class="top">
+        <swiper class="adv_swi" indicator-dots="{{true}}" autoplay="{{true}}" interval="{{3000}}" duration="{{500}}" circular="{{true}}">
+            <block wx:for="{{swiperList}}">
+                <swiper-item catch:tap="toAdv" data-id="{{item.id}}">
+                    <image class="swiper-image" src="{{item.image.img_url}}" />
+                </swiper-item>
+            </block>
+        </swiper>
+        <view class="sign">
+            <view class="p_block">
+                <p>
+                    已有
+                    <strong class="bold">{{numbers}}</strong>
+                    人
+                </p>
+                <p>
+                    在
+                    <strong class="green">驾必达</strong>
+                    上报名成功
+                </p>
+            </view>
+            <view class="bu_block">
+                <button hover-class="none" open-type="contact">一键咨询</button>
+                <button hover-class="none" catch:tap="toSign">体验学车</button>
+            </view>
+        </view>
+    </view>
+    <view class="titles">
+        <view catch:tap="activeschool" class="{{t_school}}">教练</view>
+        <view catch:tap="activity" class="{{t_act}}">套餐</view>
+    </view>
+    <view wx:if="{{title == 0}}" class="school_list">
+        <block wx:for="{{schoolList}}">
+            <view class="school" catch:tap="toDetail" data-id="{{item.id}}">
+                <view class="left">
+                    <cover-image src="{{item.image.img_url}}"></cover-image>
+                </view>
+                <view class="right">
+                    <view class="right_l">
+                        <view class="name">{{item.name}}</view>
+                        <view class="from" wx:if="{{item.driver == null}}">暂无所属驾校</view>
+                        <view class="from" wx:else>{{item.driver.name}}</view>
+                        <view class="tags">
+                            <block wx:for="{{item.label}}" wx:for-item="labelitem">
+                                <view wx:if="{{labelitem !== ''}}">{{labelitem}}</view>
+                            </block>
+                        </view>
+                    </view>
+                    <view class="score">{{item.score}}分</view>
+                </view>
+            </view>
+        </block>
+    </view>
+    <view wx:if="{{title == 1}}" class="active_list">
+        <block wx:for="{{activityList}}">
+            <view class="discounts">
+                <view class="exam-header" data-index="{{index}}" bind:tap="show">
+                    <view class="left">{{item.title}}</view>
+                    <view class="right">￥{{item.price}}</view>
+                </view>
+                <view class="exam-body {{selected[index] ? '' : 'hidden'}}">
+                    <view class="line_1">
+                        <text class="tag">详情：</text>
+                    </view>
+                    <view class="long_txt">{{item.information}}</view>
+                    <view class="line_1">
+                        <text class="tag">优惠内容：</text>
+                    </view>
+                    <view>
+                        <text class="long_txt">{{content[index]}}</text>
+                    </view>
+                </view>
+            </view>
+        </block>
+    </view>
+</view>

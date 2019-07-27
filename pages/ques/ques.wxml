@@ -1,0 +1,26 @@
+<view class="container">
+    <view class="fixTop">
+        <view class="block">
+            <view class="timeRank {{t_rank}}" catch:tap="timeRank">科目一</view>
+            <view class="dakaRank {{d_rank}}" catch:tap="dakaRank">科目四</view>
+        </view>
+    </view>
+    <view class="top">
+        <view class="practice" catch:tap="toSequence">顺序练习</view>
+        <view class="centerImg">
+            <view class="left" catch:tap="toMywrong">
+                <image src="../../imgs/notebook.png" />
+                <p>我的错题</p>
+            </view>
+            <view class="right" catch:tap="toMycollection">
+                <image src="../../imgs/collection.png" />
+                <p>我的收藏</p>
+            </view>
+        </view>
+        <view class="test" catch:tap="toSimulation">模拟考试</view>
+    </view>
+    <view class="bottom">
+        <image src="../../imgs/car.png" />
+        <text>*题库仅针对c1</text>
+    </view>
+</view>

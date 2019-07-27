@@ -1,0 +1,184 @@
+page {
+    background-color: #eeeeee;
+}
+
+swiper {
+    width: 100%;
+    height: 100%;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+.visible {
+    visibility: visible;
+}
+
+.block {
+    width: 90%;
+    margin: 0 auto;
+    padding-top: 50rpx;
+}
+
+.top {
+    width: 100%;
+    height: auto;
+    /* min-height: 600rpx; */
+    background-color: #fff;
+    position: relative;
+}
+
+.top .answerFix {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    z-index: 10;
+}
+
+.block {
+    display: block;
+}
+
+.none {
+    display: none;
+}
+
+.top .tag {
+    color: white;
+    width: 100rpx;
+    height: 60rpx;
+    background-color: #e39256;
+    border-radius: 15px;
+    text-align: center;
+    line-height: 60rpx;
+    margin-right: 20rpx;
+    float: left;
+}
+
+.questionImg {
+    display: block;
+    margin: 0 auto;
+}
+
+.question p {
+    line-height: 65rpx;
+    word-wrap: break-word;
+    font-size: 24rpx;
+}
+
+.bottom {
+    width: 100%;
+    height: auto;
+    min-height: 200rpx;
+    margin-top: 40rpx;
+    background-color: #fff;
+}
+
+.answer {
+    display: flex;
+    align-items: center;
+}
+
+/* 竖线 */
+
+.sx {
+    color: #398782;
+    font-size: 40rpx;
+    font-weight: 700;
+    margin-right: 15rpx;
+}
+
+.bottom_none {
+    display: none;
+}
+
+.bottom .title {
+    font-size: 28rpx;
+    font-weight: 700;
+}
+
+.bottom .content {
+    padding: 20rpx 0;
+    color: #909090;
+    word-wrap: break-word;
+}
+
+.fixedBottom {
+    border-top: 1px solid #8c8c8c;
+    width: 100%;
+    background-color: #fff;
+    height: 120rpx;
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.fixedBottom view {
+    width: 20%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.fixedBottom image {
+    width: 60rpx;
+    height: 60rpx;
+}
+
+/* 答题部分 */
+
+.ifRight {
+    width: 40rpx;
+    height: 40rpx;
+    margin-right: 20rpx;
+}
+
+.radio-group {
+    padding: 20rpx 10rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.radio view {
+    padding: 20rpx 0;
+    display: flex;
+    align-items: center;
+    height: auto;
+}
+
+radio .wx-radio-input {
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: none;
+}
+
+.radio_hover {
+    background-color: #eeeeee!important;
+}
+
+.blockSend {
+    width: 100%;
+    padding-bottom: 20rpx;
+}
+
+.sendAnswer {
+    background: linear-gradient(to right, #ed6049, #f4be92);
+    color: white;
+    width: 60%;
+    border-radius: 40rpx;
+    box-shadow: 2px 5px 10px #ccc;
+    font-size: 24rpx;
+    height: 80rpx;
+    line-height: 80rpx;
+    margin: 0 auto;
+}

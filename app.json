@@ -1,0 +1,52 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/imgList/imgList",
+    "pages/detail/detail",
+    "pages/login/login",
+    "pages/ques/ques",
+    "pages/sequence/sequence",
+    "pages/sign/sign",
+    "pages/appointment/appointment",
+    "pages/my/my",
+    "pages/adv/adv",
+    "pages/protect/protect",
+    "pages/mywrong/mywrong",
+    "pages/mycollection/mycollection",
+    "pages/Simulation/Simulation",
+    "pages/score/score"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#edad49",
+    "navigationBarTitleText": "驾必达学车平台",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "color": "#d2d2d2",
+    "selectedColor": "#edad49",
+    "borderStyle": "black",
+    "backgroundColor": "#fefefe",
+    "list": [
+      {
+        "selectedIconPath": "imgs/sign_s.png",
+        "iconPath": "imgs/sign.png",
+        "pagePath": "pages/index/index",
+        "text": "报名"
+      },
+      {
+        "selectedIconPath": "imgs/test_s.png",
+        "iconPath": "imgs/test.png",
+        "pagePath": "pages/ques/ques",
+        "text": "驾考"
+      },
+      {
+        "selectedIconPath": "imgs/my_s.png",
+        "iconPath": "imgs/my.png",
+        "pagePath": "pages/my/my",
+        "text": "我的"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}

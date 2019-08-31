@@ -20,17 +20,34 @@ Page({
   show(e) {
     let index = e.currentTarget.dataset.index;
     let active = this.data.active;
+    setTimeout(() => {
+      this.getHeight('long_txt', index)
+    }, 20)
+
 
     this.setData({
       [`selected[${index}]`]: !this.data.selected[`${index}`],
-      active: index
+      active: index,
     });
+    console.log(index)
 
     // 如果点击的不是当前展开的项，则关闭当前展开的项
     // 这里就实现了点击一项，隐藏另一项
     if (active !== null && active !== index) {
       this.setData({ [`selected[${active}]`]: false });
     }
+  },
+
+  getHeight(Dom, index) {
+    var that = this
+    wx.createSelectorQuery().selectAll(`.${Dom}`).boundingClientRect(function (rect) {
+      let thisIndex = 2 * index
+      let res = rect[thisIndex].height + rect[thisIndex + 1].height + 64 + 'px'
+      that.setData({
+        thisHeight: res
+      })
+    }).exec()
+
   },
 
 
@@ -44,14 +61,14 @@ Page({
         'token': app.globalData.Token
       },
       success(res) {
-        let label=  res.data.coachs.map(item => item.label)
+        let label = res.data.coachs.map(item => item.label)
         console.log(res);
         that.setData({
           schoolList: res.data.coachs,
           swiperList: res.data.images,
           title: 0,
           numbers: res.data.number,
-          label:label
+          label: label
         })
       }
 

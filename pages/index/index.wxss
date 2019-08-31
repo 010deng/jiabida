@@ -252,19 +252,18 @@ button {
 
 .exam-body {
   transition: height 0.4s;
-  height: 500rpx;
+  /* height: 500rpx; */
   padding: 0 20rpx;
   font-size: 28rpx;
 }
 
 .hidden {
-  height: 0;
+  height: 0!important;
   overflow: hidden;
 }
 
 .exam-header {
   display: flex;
-  
 }
 
 .exam-header .left {

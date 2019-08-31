@@ -59,7 +59,7 @@
                     <view class="left">{{item.title}}</view>
                     <view class="right">￥{{item.price}}</view>
                 </view>
-                <view class="exam-body {{selected[index] ? '' : 'hidden'}}">
+                <view class="exam-body {{selected[index] ? '' : 'hidden'}}" style="height:{{thisHeight}}">
                     <view class="line_1">
                         <text class="tag">详情：</text>
                     </view>
